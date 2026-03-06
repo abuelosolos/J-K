@@ -38,4 +38,5 @@ async function handleSocialAuth(provider, role) {
   }
 }
 
+window.handleSocialAuth = handleSocialAuth;
 export { handleSocialAuth };

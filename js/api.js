@@ -1,4 +1,4 @@
-var API_URL = '';
+var API_URL = 'https://j-k-production.up.railway.app/api';
 
 var Api = {
 
