@@ -1,0 +1,40 @@
+/* css/components/card.css */
+
+.card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px;
+}
+
+/* detail rows inside a card */
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+}
+
+.detail-row:last-child { border-bottom: none; }
+.detail-row__label     { color: var(--text-muted); }
+.detail-row__value     { font-weight: 600; }
+
+/* copy/link box */
+.copy-box {
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.copy-box__text {
+  font-size: 12px;
+  color: var(--amber);
+  word-break: break-all;
+}

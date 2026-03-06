@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings — Fara</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/components/navbar.css">
+  <link rel="stylesheet" href="../css/components/button.css">
+  <link rel="stylesheet" href="../css/components/input.css">
+  <link rel="stylesheet" href="../css/components/card.css">
+  <link rel="stylesheet" href="../css/components/alert.css">
+  <link rel="stylesheet" href="../css/components/toast.css">
+  <link rel="stylesheet" href="../css/modules/settings.module.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="index.html" class="navbar__logo">
+      <div class="navbar__logo-dot"></div>
+      Fara
+    </a>
+    <a href="dashboard-freelancer.html" class="btn btn--ghost btn--sm">&larr; Dashboard</a>
+  </nav>
+
+  <main class="max-w-xl mx-auto px-8 py-12 pb-20">
+
+    <h1 class="text-[26px] font-bold tracking-tight mb-8">Settings</h1>
+
+    <div class="settings-tabs">
+      <button class="tab-btn active" data-tab="profile"  onclick="switchTab('profile')">Profile</button>
+      <button class="tab-btn"        data-tab="security" onclick="switchTab('security')">Security</button>
+    </div>
+
+
+    <!-- Profile tab -->
+    <div class="tab-panel active" id="tab-profile">
+      <div class="card">
+        <div class="profile-avatar mb-4" id="profile-avatar">T</div>
+        <div class="text-[18px] font-bold mb-1"  id="profile-name">Tolu Adeyemi</div>
+        <div class="text-[13px] mb-6" id="profile-email" style="color:var(--text-muted)">tolu@example.com</div>
+        <div class="grid grid-cols-2 gap-4 max-[600px]:grid-cols-1">
+          <div class="field">
+            <label class="field__label" for="p-name">Full name</label>
+            <input class="input" type="text" id="p-name">
+          </div>
+          <div class="field">
+            <label class="field__label" for="p-email">Email address</label>
+            <input class="input" type="email" id="p-email">
+          </div>
+        </div>
+        <button class="btn btn--primary" onclick="saveProfile()">Save changes</button>
+      </div>
+    </div>
+
+
+    <!-- Security tab -->
+    <div class="tab-panel" id="tab-security">
+      <div class="card">
+        <div class="text-[16px] font-semibold mb-1.5">Change password</div>
+        <p class="text-[13px] mb-6" style="color:var(--text-muted)">You'll receive a 6-digit code to confirm the change.</p>
+
+        <!-- Step 1: form -->
+        <div class="step" id="step-form">
+          <div id="pass-error" class="alert alert--error" style="display:none;margin-bottom:16px">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+            </svg>
+            <span></span>
+          </div>
+          <div class="field"><label class="field__label" for="cur-pass">Current password</label><input class="input" type="password" id="cur-pass" placeholder="••••••••"></div>
+          <div class="field"><label class="field__label" for="new-pass">New password</label><input class="input" type="password" id="new-pass" placeholder="At least 8 characters"></div>
+          <div class="field"><label class="field__label" for="confirm-pass">Confirm new password</label><input class="input" type="password" id="confirm-pass" placeholder="Repeat new password"></div>
+          <button class="btn btn--primary" onclick="requestPasswordChange()">Send verification code</button>
+        </div>
+
+        <!-- Step 2: verify -->
+        <div class="step" id="step-verify">
+          <div class="alert alert--info" style="margin-bottom:16px">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/></svg>
+            Code sent to your email.
+          </div>
+          <div id="verify-error" class="alert alert--error" style="display:none;margin-bottom:16px">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/></svg>
+            <span></span>
+          </div>
+          <div class="field">
+            <label class="field__label" for="verify-code">6-digit code</label>
+            <input class="input input--code" type="text" id="verify-code" maxlength="6" placeholder="000000">
+          </div>
+          <div class="flex gap-2.5">
+            <button class="btn btn--primary" onclick="confirmPasswordChange()">Confirm</button>
+            <button class="btn btn--ghost"   onclick="resetPasswordForm()">Cancel</button>
+          </div>
+        </div>
+
+        <!-- Step 3: done -->
+        <div class="step" id="step-done">
+          <div class="alert alert--success" style="margin-bottom:16px">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg>
+            Password updated successfully.
+          </div>
+          <button class="btn btn--ghost" onclick="resetPasswordForm()">Change again</button>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <div id="toast-wrap" class="toast-wrap"></div>
+  <script src="../js/utils.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/settings.js"></script>
+
+</body>
+</html>

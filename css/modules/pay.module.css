@@ -1,0 +1,74 @@
+/* css/modules/pay.module.css */
+
+.pay-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 36px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.5);
+}
+
+.pay-card__invoice-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 100px;
+  padding: 4px 12px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.pay-card__title { font-size: 22px; font-weight: 700; letter-spacing: -0.02em; }
+.pay-card__from  { font-size: 14px; color: var(--text-muted); }
+
+.pay-breakdown {
+  background: var(--surface-2);
+  border-radius: var(--radius-sm);
+  padding: 18px;
+}
+
+.pay-breakdown__row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.pay-breakdown__row--total {
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 600;
+}
+
+/* success state */
+.success-icon {
+  width: 64px;
+  height: 64px;
+  background: var(--green-dim);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--green);
+  font-size: 28px;
+}
+
+/* spinner */
+.spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(10, 10, 11, 0.3);
+  border-top-color: #0a0a0b;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+  display: inline-block;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }

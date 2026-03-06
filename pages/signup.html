@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create account — Fara</title>
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/components/toast.css">
+  <link rel="stylesheet" href="../css/modules/auth.module.css">
+</head>
+<body>
+
+  <div class="bg">
+    <div class="orb"></div>
+    <div class="orb"></div>
+    <div class="orb"></div>
+  </div>
+
+  <div class="page">
+    <div class="card wide">
+
+      <a href="index.html" class="logo">
+        <div class="dot"></div>
+        Fara
+      </a>
+
+      <h1 class="title">Create your account</h1>
+      <p class="sub">Get paid in USD. Withdraw in NGN.</p>
+
+      <div class="socials row">
+        <button class="social-btn" onclick="handleSocialAuth('google')">
+          <svg width="16" height="16" viewBox="0 0 24 24">
+            <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+            <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+            <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+            <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+          </svg>
+          Google
+        </button>
+        <button class="social-btn" onclick="handleSocialAuth('apple')">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="#f0ede8">
+            <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+          </svg>
+          Apple
+        </button>
+      </div>
+
+      <div class="or">or continue with email</div>
+
+      <div class="role-picker">
+        <button class="role-card active" id="role-freelancer" onclick="selectRole('freelancer')">
+          <div class="icon">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <path d="M12 2a5 5 0 110 10A5 5 0 0112 2z"/>
+              <path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+            </svg>
+          </div>
+          <div class="name">Freelancer</div>
+          <div class="desc">Get paid in USD · withdraw in NGN</div>
+        </button>
+        <button class="role-card" id="role-client" onclick="selectRole('client')">
+          <div class="icon">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <rect x="2" y="7" width="20" height="14" rx="2"/>
+              <path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/>
+              <line x1="12" y1="12" x2="12" y2="16"/>
+              <line x1="10" y1="14" x2="14" y2="14"/>
+            </svg>
+          </div>
+          <div class="name">Hiring</div>
+          <div class="desc">Pay talent · track invoices</div>
+        </button>
+      </div>
+
+      <!-- client type — only visible when Hiring is selected -->
+      <div class="client-type-wrap" id="client-type-wrap" style="display:none">
+        <div class="client-type-label">Registering as</div>
+        <div class="client-type-options">
+          <label class="radio-card active" id="radio-individual">
+            <input type="radio" name="client_type" value="individual" checked onchange="selectClientType('individual')">
+            <div class="radio-card-dot"></div>
+            <div>
+              <div class="radio-card-name">Individual</div>
+              <div class="radio-card-desc">Personal account</div>
+            </div>
+          </label>
+          <label class="radio-card" id="radio-business">
+            <input type="radio" name="client_type" value="business" onchange="selectClientType('business')">
+            <div class="radio-card-dot"></div>
+            <div>
+              <div class="radio-card-name">Business</div>
+              <div class="radio-card-desc">Company account</div>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <div id="error-box">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="10"/>
+          <line x1="12" y1="8" x2="12" y2="12"/>
+          <line x1="12" y1="16" x2="12.01" y2="16"/>
+        </svg>
+        <span></span>
+      </div>
+
+      <!-- Individual fields (default) -->
+      <div id="fields-individual">
+        <div class="field">
+          <label for="name">Full name</label>
+          <input type="text" id="name" placeholder="Tolu Adeyemi" autocomplete="name">
+        </div>
+        <div class="field">
+          <label for="phone">Phone number</label>
+          <input type="tel" id="phone" placeholder="+234 800 000 0000" autocomplete="tel">
+        </div>
+      </div>
+
+      <!-- Business fields (shown when business selected) -->
+      <div id="fields-business" style="display:none">
+        <div class="field">
+          <label for="biz-name">Business name</label>
+          <input type="text" id="biz-name" placeholder="Adire Studio Ltd">
+        </div>
+        <div class="field">
+          <label for="biz-rc">RC number <span class="field-optional">optional</span></label>
+          <input type="text" id="biz-rc" placeholder="e.g. RC1234567">
+        </div>
+        <div class="field">
+          <label for="biz-industry">Industry</label>
+          <select id="biz-industry">
+            <option value="" disabled selected>Select industry</option>
+            <option>Technology</option>
+            <option>Media & Creative</option>
+            <option>Finance</option>
+            <option>E-commerce</option>
+            <option>Healthcare</option>
+            <option>Education</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="biz-contact">Contact person</label>
+          <input type="text" id="biz-contact" placeholder="Full name of account manager">
+        </div>
+      </div>
+
+      <!-- Always shown -->
+      <div class="field">
+        <label for="email">Email address</label>
+        <input type="email" id="email" placeholder="you@example.com" autocomplete="email">
+      </div>
+
+      <div class="field">
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="At least 8 characters" autocomplete="new-password">
+      </div>
+
+      <button class="submit-btn" onclick="handleSignup()">Create account</button>
+
+      <p class="switch-link">Already have an account? <a href="login.html">Sign in</a></p>
+
+      <div class="sandbox">Sandbox · No real money</div>
+
+    </div>
+  </div>
+
+  <div id="toast-wrap" class="toast-wrap"></div>
+  <script src="../js/utils.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/signup.js"></script>
+  <script src="../js/auth.js"></script>
+
+</body>
+</html>

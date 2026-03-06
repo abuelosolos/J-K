@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — Fara</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/components/toast.css">
+  <link rel="stylesheet" href="../css/modules/dashboard.module.css">
+</head>
+<body>
+
+  <!-- ── Navbar ──────────────────────────────────────────── -->
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-dot"></div>
+      Fara
+    </a>
+    <div class="nav-right">
+      <div class="kyc-badge" id="kyc-badge" style="display:none">
+        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+        KYC pending
+      </div>
+      <a href="settings.html" class="nav-link">Settings</a>
+      <div class="user-chip" id="user-chip" onclick="Api.logout()" title="Sign out">
+        <div class="user-chip-avatar" id="user-avatar">T</div>
+        <span id="user-name">Loading…</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── Main ────────────────────────────────────────────── -->
+  <main class="main">
+
+    <!-- Page header -->
+    <div class="page-header">
+      <div>
+        <p class="page-greeting">Good to have you back,</p>
+        <h1 class="page-title" id="dash-title">Dashboard</h1>
+      </div>
+      <button class="btn-new-invoice" onclick="openModal('create-modal')">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+          <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+        </svg>
+        New invoice
+      </button>
+    </div>
+
+    <!-- Top row: wallet + quick stats -->
+    <div class="top-grid">
+
+      <!-- Wallet card -->
+      <div class="wallet-card">
+        <div class="wallet-card-inner">
+          <div class="wallet-label">Available balance</div>
+          <div class="wallet-amount" id="balance-amount">—</div>
+          <div class="wallet-actions">
+            <button class="wallet-btn" onclick="openWithdrawModal()">
+              <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+                <line x1="12" y1="5" x2="12" y2="19"/><polyline points="19,12 12,19 5,12"/>
+              </svg>
+              Withdraw
+            </button>
+          </div>
+        </div>
+        <div class="wallet-glow"></div>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats-col">
+        <div class="stat-card">
+          <div class="stat-label">Total earned</div>
+          <div class="stat-value" id="stat-earned">—</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Invoices paid</div>
+          <div class="stat-value" id="stat-paid">—</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom row: activity + tip -->
+    <div class="bottom-grid">
+
+      <div class="panel">
+        <div class="panel-header">
+          <span class="panel-title">Recent activity</span>
+          <span class="panel-sub" id="tx-count"></span>
+        </div>
+        <div id="tx-list"></div>
+      </div>
+
+      <div class="side-col">
+        <div class="how-card">
+          <div class="how-card-icon">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+            </svg>
+          </div>
+          <div class="how-card-title">How to get paid</div>
+          <div class="how-card-body">Create an invoice → copy the link → send to your client. Funds hit your wallet the moment they pay.</div>
+          <div class="how-card-fee">$2 flat fee · rest converts to NGN</div>
+        </div>
+
+        <div class="invoice-cta" onclick="openModal('create-modal')">
+          <span>Create your first invoice</span>
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/>
+          </svg>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+
+  <!-- ═══════════════════════════════════════════════════════
+       KYC FLOW — shown once after first signup
+  ════════════════════════════════════════════════════════ -->
+
+  <!-- Step 1: BVN -->
+  <div class="overlay" id="kyc-bvn">
+    <div class="modal-card">
+      <div class="modal-step">Step 1 of 3</div>
+      <div class="modal-icon modal-icon--amber">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+          <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/>
+        </svg>
+      </div>
+      <h2 class="modal-title">Verify your BVN</h2>
+      <p class="modal-sub">Your Bank Verification Number links your identity to your wallet for secure withdrawals.</p>
+      <div class="modal-field">
+        <label for="kyc-bvn-input">BVN</label>
+        <input type="text" id="kyc-bvn-input" placeholder="11-digit BVN" maxlength="11" inputmode="numeric">
+      </div>
+      <div class="modal-error" id="bvn-error" style="display:none"></div>
+      <div class="modal-actions">
+        <button class="modal-btn-primary" onclick="submitBVN()">Continue</button>
+        <button class="modal-btn-ghost" onclick="skipKYC()">Skip for now</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 2: NIN -->
+  <div class="overlay" id="kyc-nin" style="display:none">
+    <div class="modal-card">
+      <div class="modal-step">Step 2 of 3</div>
+      <div class="modal-icon modal-icon--amber">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+          <rect x="2" y="5" width="20" height="14" rx="2"/>
+          <line x1="2" y1="10" x2="22" y2="10"/>
+        </svg>
+      </div>
+      <h2 class="modal-title">National ID Number</h2>
+      <p class="modal-sub">Your NIN helps us confirm your identity with NIMC and comply with CBN regulations.</p>
+      <div class="modal-field">
+        <label for="kyc-nin-input">NIN</label>
+        <input type="text" id="kyc-nin-input" placeholder="11-digit NIN" maxlength="11" inputmode="numeric">
+      </div>
+      <div class="modal-error" id="nin-error" style="display:none"></div>
+      <div class="modal-actions">
+        <button class="modal-btn-primary" onclick="submitNIN()">Continue</button>
+        <button class="modal-btn-ghost" onclick="skipKYC()">Skip for now</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 3: Bank account -->
+  <div class="overlay" id="kyc-bank" style="display:none">
+    <div class="modal-card">
+      <div class="modal-step">Step 3 of 3</div>
+      <div class="modal-icon modal-icon--amber">
+        <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+          <rect x="1" y="4" width="22" height="16" rx="2"/>
+          <line x1="1" y1="10" x2="23" y2="10"/>
+        </svg>
+      </div>
+      <h2 class="modal-title">Add your bank account</h2>
+      <p class="modal-sub">This is where your NGN withdrawals will be sent. You can update it later in settings.</p>
+      <div class="modal-field">
+        <label for="kyc-bank-code">Bank code</label>
+        <input type="text" id="kyc-bank-code" placeholder="e.g. 058 for GTBank">
+      </div>
+      <div class="modal-field">
+        <label for="kyc-acct-number">Account number</label>
+        <input type="text" id="kyc-acct-number" placeholder="10-digit NUBAN" maxlength="10" inputmode="numeric">
+      </div>
+      <div class="modal-field">
+        <label for="kyc-acct-name">Account name</label>
+        <input type="text" id="kyc-acct-name" placeholder="As it appears on your bank record">
+      </div>
+      <div class="modal-error" id="bank-error" style="display:none"></div>
+      <div class="modal-actions">
+        <button class="modal-btn-primary" onclick="submitBank()">Finish setup</button>
+        <button class="modal-btn-ghost" onclick="skipKYC()">Skip for now</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- KYC done confirmation -->
+  <div class="overlay" id="kyc-done" style="display:none">
+    <div class="modal-card modal-card--center">
+      <div class="modal-icon modal-icon--green">
+        <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <polyline points="20,6 9,17 4,12"/>
+        </svg>
+      </div>
+      <h2 class="modal-title">Submitted for review</h2>
+      <p class="modal-sub">Your details are being verified. This usually takes 1–2 business days. We'll notify you once confirmed.</p>
+      <button class="modal-btn-primary" style="width:100%" onclick="finishKYC()">Go to dashboard</button>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════
+       EXISTING MODALS
+  ════════════════════════════════════════════════════════ -->
+
+  <!-- Create invoice -->
+  <div class="overlay" id="create-modal" onclick="if(event.target===this)closeModal('create-modal')" style="display:none">
+    <div class="modal-card">
+      <div class="modal-header">
+        <span class="modal-title">New invoice</span>
+        <button class="modal-close" onclick="closeModal('create-modal')">&times;</button>
+      </div>
+      <p class="modal-sub">Create a payment link and send it to your client.</p>
+      <div class="modal-error" id="create-error" style="display:none"></div>
+      <div class="modal-field">
+        <label for="new-title">Job description</label>
+        <input type="text" id="new-title" placeholder="e.g. Brand identity for Adire Studio">
+      </div>
+      <div class="modal-field">
+        <label for="new-amount">Amount (USD)</label>
+        <div class="input-prefix-wrap">
+          <span>$</span>
+          <input type="number" id="new-amount" min="3" placeholder="350">
+        </div>
+      </div>
+      <div class="modal-info">
+        <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/>
+        </svg>
+        Fara deducts a flat $2 fee. The rest converts to NGN and hits your wallet.
+      </div>
+      <div class="modal-actions">
+        <button class="modal-btn-primary" onclick="handleCreateInvoice()">Create invoice</button>
+        <button class="modal-btn-ghost" onclick="closeModal('create-modal')">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Invoice link -->
+  <div class="overlay" id="invoice-modal" onclick="if(event.target===this)closeModal('invoice-modal')" style="display:none">
+    <div class="modal-card">
+      <div class="modal-header">
+        <span class="modal-title" id="detail-title"></span>
+        <button class="modal-close" onclick="closeModal('invoice-modal')">&times;</button>
+      </div>
+      <div class="invoice-breakdown">
+        <div class="breakdown-row"><span>Invoice amount</span><span id="detail-amount"></span></div>
+        <div class="breakdown-row"><span>Platform fee</span><span style="color:var(--text-muted)">−$2.00</span></div>
+        <div class="breakdown-row"><span>You receive (USD)</span><span id="detail-net"></span></div>
+        <div class="breakdown-row breakdown-row--highlight"><span>You receive (NGN)</span><span id="detail-ngn"></span></div>
+      </div>
+      <div class="copy-label">Share with client</div>
+      <div class="copy-box">
+        <span id="detail-link"></span>
+        <button onclick="copyInvoiceLink()">Copy</button>
+      </div>
+      <div class="modal-actions" style="margin-top:20px">
+        <button class="modal-btn-ghost" onclick="closeModal('invoice-modal')">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Withdraw -->
+  <div class="overlay" id="withdraw-modal" onclick="if(event.target===this)closeModal('withdraw-modal')" style="display:none">
+    <div class="modal-card">
+      <div class="modal-header">
+        <span class="modal-title">Withdraw funds</span>
+        <button class="modal-close" onclick="closeModal('withdraw-modal')">&times;</button>
+      </div>
+      <div class="modal-info">
+        Available: <strong id="w-available"></strong> &nbsp;·&nbsp; Min ₦15,800
+      </div>
+      <div class="modal-error" id="w-error" style="display:none"></div>
+      <div class="modal-field"><label for="w-amount">Amount (NGN)</label><input type="number" id="w-amount" placeholder="e.g. 50000"></div>
+      <div class="modal-field"><label for="w-bank">Bank code</label><input type="text" id="w-bank" placeholder="e.g. 058 for GTBank"></div>
+      <div class="modal-field"><label for="w-acct">Account number</label><input type="text" id="w-acct" maxlength="10" placeholder="10-digit NUBAN"></div>
+      <div class="modal-field"><label for="w-name">Account name</label><input type="text" id="w-name" placeholder="As on bank record"></div>
+      <div class="modal-field"><label for="w-pass">Confirm with password</label><input type="password" id="w-pass" placeholder="••••••••"></div>
+      <div class="modal-actions">
+        <button class="modal-btn-primary" onclick="handleWithdraw()">Confirm withdrawal</button>
+        <button class="modal-btn-ghost" onclick="closeModal('withdraw-modal')">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="toast-wrap" class="toast-wrap"></div>
+  <script src="../js/utils.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/dashboard-freelancer.js"></script>
+
+</body>
+</html>

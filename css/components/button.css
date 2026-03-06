@@ -1,0 +1,57 @@
+/* css/components/button.css */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font);
+  font-size: 14px;
+  font-weight: 600;
+  border: none;
+  border-radius: var(--radius-sm);
+  padding: 11px 20px;
+  cursor: pointer;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: background var(--ease), border-color var(--ease), opacity var(--ease);
+}
+
+.btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* variants */
+.btn--primary {
+  background: var(--amber);
+  color: #0a0a0b;
+}
+.btn--primary:hover:not(:disabled) { background: var(--amber-hover); }
+
+.btn--secondary {
+  background: var(--surface-2);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+.btn--secondary:hover:not(:disabled) { border-color: var(--border-hover); background: #1e1e22; }
+
+.btn--ghost {
+  background: transparent;
+  color: var(--text-muted);
+  padding: 10px 16px;
+}
+.btn--ghost:hover:not(:disabled) { color: var(--text); background: var(--surface-2); }
+
+.btn--danger {
+  background: var(--red-dim);
+  color: var(--red);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+.btn--danger:hover:not(:disabled) { background: rgba(239, 68, 68, 0.18); }
+
+/* sizes */
+.btn--sm { font-size: 12px; padding: 7px 13px; border-radius: 6px; }
+.btn--lg { font-size: 15px; padding: 13px 28px; border-radius: var(--radius); }
+.btn--full { width: 100%; }

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Payments — Fara</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/components/navbar.css">
+  <link rel="stylesheet" href="../css/components/button.css">
+  <link rel="stylesheet" href="../css/components/card.css">
+  <link rel="stylesheet" href="../css/components/badge.css">
+  <link rel="stylesheet" href="../css/components/toast.css">
+  <link rel="stylesheet" href="../css/modules/dashboard.module.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="index.html" class="navbar__logo">
+      <div class="navbar__logo-dot"></div>
+      Fara
+    </a>
+    <div class="navbar__actions">
+      <span class="role-pill role-pill--client">Hiring</span>
+      <a href="settings.html" class="btn btn--ghost btn--sm">Settings</a>
+      <div class="user-chip" onclick="Api.logout()" title="Sign out">
+        <div class="user-chip__avatar" id="user-avatar">T</div>
+        <span class="user-chip__name" id="user-name">Loading…</span>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-5xl mx-auto px-8 pb-16">
+
+    <!-- Header -->
+    <div class="py-8" style="border-bottom:1px solid var(--border)">
+      <div class="text-[13px] mb-1" style="color:var(--text-muted)">Signed in as hiring account</div>
+      <h1 class="text-[26px] font-bold tracking-tight">Your payments</h1>
+    </div>
+
+    <!-- Stats -->
+    <div class="grid grid-cols-3 gap-4 mt-8 max-[700px]:grid-cols-1">
+      <div class="stat-card"><div class="stat-card__label">Total paid out</div><div class="stat-card__value" id="total-paid">$0.00</div></div>
+      <div class="stat-card"><div class="stat-card__label">Freelancers paid</div><div class="stat-card__value" id="total-freelancers">0</div></div>
+      <div class="stat-card"><div class="stat-card__label">This month</div><div class="stat-card__value" id="total-month">$0.00</div></div>
+    </div>
+
+    <!-- History -->
+    <div class="card mt-5">
+      <div class="flex items-center justify-between mb-4">
+        <div class="text-[15px] font-semibold">Payment history</div>
+      </div>
+      <div id="payment-list">
+        <p class="text-[13px] py-3" style="color:var(--text-muted)">Loading…</p>
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="mt-5 rounded-2xl p-7 flex items-center gap-5 flex-wrap" style="border:1px dashed var(--border-hover)">
+      <div>
+        <div class="text-[15px] font-semibold mb-1">Ready to pay a freelancer?</div>
+        <div class="text-[13px]" style="color:var(--text-muted)">Ask them to send you a Fara payment link.</div>
+      </div>
+    </div>
+
+  </main>
+
+  <div id="toast-wrap" class="toast-wrap"></div>
+  <script src="../js/utils.js"></script>
+  <script src="../js/api.js"></script>
+  <script src="../js/dashboard-client.js"></script>
+
+</body>
+</html>

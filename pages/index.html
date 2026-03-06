@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fara — Payment Infrastructure for African Freelancers</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/components/toast.css">
+  <link rel="stylesheet" href="../css/modules/landing.module.css">
+</head>
+<body>
+
+  <!-- ── Nav ──────────────────────────────────── -->
+  <nav class="nav">
+    <a href="index.html" class="nav-logo">
+      <div class="nav-logo-dot"></div>
+      Fara
+    </a>
+    <div class="nav-links">
+      <a href="#how">How it works</a>
+      <a href="#features">Features</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <div class="nav-actions">
+      <a href="login.html"  class="btn-ghost">Sign in</a>
+      <a href="signup.html" class="btn-primary">Get started</a>
+    </div>
+  </nav>
+
+
+  <!-- ── Hero ─────────────────────────────────── -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-inner">
+
+        <div>
+          <div class="hero-eyebrow">
+            <div class="hero-eyebrow-dot"></div>
+            Payment infrastructure for African freelancers
+          </div>
+          <h1 class="hero-title">
+            Invoice clients.<br>
+            <em>Get paid fast.</em>
+          </h1>
+          <p class="hero-sub">
+            Fara lets you receive USD payments from clients anywhere in the world and withdraw directly to your Nigerian bank account — with a flat $2 fee, no surprises.
+          </p>
+          <div class="hero-ctas">
+            <a href="signup.html" class="btn-primary btn-primary-lg">Create free account</a>
+            <a href="login.html" class="btn-outline-lg">
+              Sign in
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/>
+              </svg>
+            </a>
+          </div>
+          <div class="hero-trust">
+            <div class="trust-item">
+              <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg>
+              Powered by Interswitch
+            </div>
+            <div class="trust-item">
+              <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg>
+              $2 flat fee per payment
+            </div>
+            <div class="trust-item">
+              <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg>
+              Free to sign up
+            </div>
+            <div class="trust-item">
+              <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg>
+              Sandbox mode available
+            </div>
+          </div>
+        </div>
+
+        <!-- mock wallet card -->
+        <div class="hero-card">
+          <div class="hero-card-inner">
+            <div class="hero-card-label">Available balance</div>
+            <div class="hero-card-amount">₦2,450,600</div>
+            <div class="hero-card-divider"></div>
+            <div class="hero-card-rows">
+              <div class="hero-card-row">
+                <div class="hero-card-row-left">
+                  <div class="hero-card-icon">
+                    <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5,12 12,5 19,12"/></svg>
+                  </div>
+                  Brand identity · $500
+                </div>
+                <div class="hero-card-row-amount">+₦790,100</div>
+              </div>
+              <div class="hero-card-row">
+                <div class="hero-card-row-left">
+                  <div class="hero-card-icon">
+                    <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5,12 12,5 19,12"/></svg>
+                  </div>
+                  Mobile app design · $1,200
+                </div>
+                <div class="hero-card-row-amount">+₦1,896,400</div>
+              </div>
+            </div>
+            <div class="hero-card-badge">
+              <div class="badge-dot"></div>
+              Live · Funds settled
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!--  Stats bar  -->
+  <div class="stats-bar">
+    <div class="wrap">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <div class="stat-number"><span>$2</span></div>
+          <div class="stat-desc">Flat fee per transaction, always</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">1,580<span>+</span></div>
+          <div class="stat-desc">NGN per USD exchange rate</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number"><span>24h</span></div>
+          <div class="stat-desc">Withdrawal processing time</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">100<span>%</span></div>
+          <div class="stat-desc">Free to create an account</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ── How it works -->
+  <section class="how-section" id="how">
+    <div class="wrap">
+      <div class="section-label">How it works</div>
+      <h2 class="section-title">Three steps to getting paid</h2>
+      <div class="how-grid">
+        <div class="how-card">
+          <div class="how-num">01 — Create</div>
+          <div class="how-icon">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+              <polyline points="14,2 14,8 20,8"/>
+              <line x1="12" y1="11" x2="12" y2="17"/>
+              <line x1="9" y1="14" x2="15" y2="14"/>
+            </svg>
+          </div>
+          <div class="how-title">Generate an invoice</div>
+          <div class="how-body">Set the job title and amount in USD. Fara instantly generates a unique payment link you can send to any client, anywhere in the world.</div>
+        </div>
+        <div class="how-card">
+          <div class="how-num">02 — Collect</div>
+          <div class="how-icon">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <rect x="1" y="4" width="22" height="16" rx="2"/>
+              <line x1="1" y1="10" x2="23" y2="10"/>
+            </svg>
+          </div>
+          <div class="how-title">Client pays by card</div>
+          <div class="how-body">Your client opens the link and pays with their debit or credit card. No account needed on their end. Fara deducts a flat $2 fee and converts the rest to NGN.</div>
+        </div>
+        <div class="how-card">
+          <div class="how-num">03 — Withdraw</div>
+          <div class="how-icon">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <polyline points="17,1 21,5 17,9"/>
+              <path d="M3 11V9a4 4 0 014-4h14"/>
+              <polyline points="7,23 3,19 7,15"/>
+              <path d="M21 13v2a4 4 0 01-4 4H3"/>
+            </svg>
+          </div>
+          <div class="how-title">Cash out to your bank</div>
+          <div class="how-body">Funds land in your Fara wallet instantly after payment. Withdraw to any Nigerian bank account with a single click. Arrives within 24 hours.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ── Features ──────────────────────────────── -->
+  <section class="features-section" id="features">
+    <div class="wrap">
+      <div class="section-label">Features</div>
+      <h2 class="section-title">Everything you need to get paid professionally</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon feature-icon-amber">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <line x1="12" y1="1" x2="12" y2="23"/>
+              <path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/>
+            </svg>
+          </div>
+          <div>
+            <div class="feature-title">USD invoicing</div>
+            <div class="feature-body">Create invoices in USD and share a clean payment link. No PDFs, no back and forth — clients just click and pay.</div>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon feature-icon-green">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          <div>
+            <div class="feature-title">KYC verified payouts</div>
+            <div class="feature-body">BVN and NIN verification ensures your identity is protected and your withdrawals are compliant with CBN regulations.</div>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon feature-icon-indigo">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <rect x="2" y="3" width="20" height="14" rx="2"/>
+              <line x1="8" y1="21" x2="16" y2="21"/>
+              <line x1="12" y1="17" x2="12" y2="21"/>
+            </svg>
+          </div>
+          <div>
+            <div class="feature-title">Real-time wallet</div>
+            <div class="feature-body">See your balance update the moment a client pays. Track every credit and debit with full transaction history.</div>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon feature-icon-amber">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12,6 12,12 16,14"/>
+            </svg>
+          </div>
+          <div>
+            <div class="feature-title">Fast withdrawals</div>
+            <div class="feature-body">Withdraw NGN directly to any Nigerian bank account. Funds arrive within 24 hours — no queues, no bank visits.</div>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon feature-icon-green">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 00-3-3.87"/>
+              <path d="M16 3.13a4 4 0 010 7.75"/>
+            </svg>
+          </div>
+          <div>
+            <div class="feature-title">Client management</div>
+            <div class="feature-body">Businesses and individuals can sign up to track payments, manage invoices, and monitor spend across multiple freelancers.</div>
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon feature-icon-indigo">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24">
+              <rect x="5" y="2" width="14" height="20" rx="2"/>
+              <line x1="12" y1="18" x2="12.01" y2="18"/>
+            </svg>
+          </div>
+          <div>
+            <div class="feature-title">Mobile ready</div>
+            <div class="feature-body">Fully responsive across all devices. Manage invoices and check your balance on the go from any phone or tablet.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ── Pricing ────────────────────────────────── -->
+  <section class="pricing-section" id="pricing">
+    <div class="wrap pricing-center">
+      <div class="section-label">Pricing</div>
+      <h2 class="section-title">Simple, honest pricing</h2>
+      <p class="section-sub">No monthly fees, no percentage cuts, no hidden charges. Just $2 per payment received.</p>
+    </div>
+    <div class="pricing-card">
+      <div class="pricing-card-inner">
+        <div class="pricing-badge">Pay as you go</div>
+        <div class="pricing-amount"><sup>$</sup>2</div>
+        <div class="pricing-per">flat fee per payment received</div>
+        <ul class="pricing-features">
+          <li><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg>Unlimited invoices — free to create</li>
+          <li><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg>USD to NGN conversion at live rate</li>
+          <li><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg>Direct bank withdrawal</li>
+          <li><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg>KYC verification & compliance</li>
+          <li><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg>Full transaction history</li>
+          <li><svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><polyline points="20,6 9,17 4,12"/></svg>Google & Apple sign-in</li>
+        </ul>
+        <a href="signup.html" class="pricing-cta">Get started free</a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ── Who it's for ───────────────────────────── -->
+  <section class="who-section">
+    <div class="wrap">
+      <div class="section-label">Who it's for</div>
+      <h2 class="section-title">Built for freelancers and the businesses that hire them</h2>
+      <div class="who-grid">
+        <div class="who-card">
+          <div class="who-tag who-tag-amber">
+            <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            Freelancers
+          </div>
+          <div class="who-title">Get paid what you're worth</div>
+          <div class="who-body">Stop losing money to bank charges and poor exchange rates. Fara gives you a professional way to invoice global clients and keep more of what you earn.</div>
+          <ul class="who-list">
+            <li>Designers, developers, writers</li>
+            <li>Consultants and strategists</li>
+            <li>Videographers and creators</li>
+            <li>Any skilled Nigerian freelancer</li>
+          </ul>
+        </div>
+        <div class="who-card">
+          <div class="who-tag who-tag-indigo">
+            <svg width="11" height="11" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
+            Clients & Businesses
+          </div>
+          <div class="who-title">Pay African talent with ease</div>
+          <div class="who-body">Working with freelancers in Nigeria? Fara makes it simple. No wire transfers, no complicated bank details — just a link and a card payment.</div>
+          <ul class="who-list">
+            <li>Startups hiring remote talent</li>
+            <li>Agencies managing contractors</li>
+            <li>Businesses paying service providers</li>
+            <li>Individuals commissioning work</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ── FAQ ───────────────────────────────────── -->
+  <section class="faq-section" id="faq">
+    <div class="wrap faq-center">
+      <div class="section-label">FAQ</div>
+      <h2 class="section-title">Common questions</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFAQ(this)">How does the $2 fee work?<div class="faq-icon"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button>
+          <div class="faq-answer">When a client pays your invoice, Fara deducts a flat $2 fee from the amount. The remainder is converted to NGN at the live exchange rate and credited to your Fara wallet. For example, a $500 invoice means you receive the equivalent of $498 in NGN.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFAQ(this)">How long do withdrawals take?<div class="faq-icon"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button>
+          <div class="faq-answer">Withdrawals are processed within 1 business day. Funds are sent directly to your Nigerian bank account via Interswitch. You'll need to complete KYC verification before your first withdrawal.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFAQ(this)">What is KYC and why is it required?<div class="faq-icon"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button>
+          <div class="faq-answer">KYC (Know Your Customer) is required by the Central Bank of Nigeria for any platform handling financial transactions. We collect your BVN and NIN to verify your identity. This protects you and keeps Fara compliant. Verification typically takes 1–2 business days.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFAQ(this)">Does my client need a Fara account to pay me?<div class="faq-icon"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button>
+          <div class="faq-answer">No. Your client only needs the payment link you send them. They enter their name, email, and card details — that's it. They don't need to sign up for anything. If they want to track payments they can optionally create a client account.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFAQ(this)">What exchange rate does Fara use?<div class="faq-icon"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button>
+          <div class="faq-answer">Fara uses the current market rate for USD to NGN conversion. The rate is displayed on your dashboard and on each payment. We do not add a spread or markup to the exchange rate — you get the full amount at the live rate, minus only the $2 flat fee.</div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question" onclick="toggleFAQ(this)">Is this a sandbox / demo?<div class="faq-icon"><svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button>
+          <div class="faq-answer">Yes — Fara is currently in sandbox mode. No real money is moved, no real card charges are made, and no real bank transfers happen. This is a fully functional demo of the product. Full production launch is coming soon.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ── CTA ───────────────────────────────────── -->
+  <section class="cta-section">
+    <div class="wrap">
+      <div class="cta-box">
+        <div class="cta-box-inner">
+          <h2 class="cta-title">Ready to get paid<br><em>the right way?</em></h2>
+          <p class="cta-sub">Join Fara today. Create your account in under a minute and send your first invoice before the hour is up.</p>
+          <div class="cta-btns">
+            <a href="signup.html" class="btn-primary btn-primary-lg">Create free account</a>
+            <a href="login.html" class="btn-outline-lg">I already have an account</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ── Footer ─────────────────────────────────── -->
+  <footer>
+    <div class="wrap">
+      <div class="footer-inner">
+        <div class="footer-logo">
+          <div class="nav-logo-dot"></div>
+          Fara
+        </div>
+        <div class="footer-links">
+          <a href="#how">How it works</a>
+          <a href="#features">Features</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#faq">FAQ</a>
+        </div>
+        <div class="footer-copy">© 2025 Fara. Sandbox — no real money.</div>
+      </div>
+    </div>
+  </footer>
+
+
+  <div id="toast-wrap" class="toast-wrap"></div>
+  <script src="../js/utils.js"></script>
+  <script src="../js/landing.js"></script>
+
+</body>
+</html>
